@@ -1,3 +1,14 @@
 @import "_global.css";
 @import "../modules/header/header.css";
 @import "../modules/footer/footer.css";
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    font-family: Impact;
+    font-size: 20vw;
+    font-weight: 700;
+}
