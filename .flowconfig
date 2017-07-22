@@ -2,6 +2,7 @@
 .*/node_modules/npm/*
 .*/node_modules/stylelint/*
 .*/node_modules/config-chain/*
+.*/node_modules/youtube-player/*
 
 [include]
 

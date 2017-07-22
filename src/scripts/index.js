@@ -25,37 +25,22 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     player.mute();
   });
-  // // YouTubeの埋め込み
-  // function onYouTubeIframeAPIReady() {
-  //   ytPlayer = new YT.Player(
-  //     'youtube', // 埋め込む場所をIDで設定
-  //     {
-  //       videoId: 'vk2XlND2kQ0', // YouTubeのIDを指定
-  //       width: 640,
-  //       height: 400,
-  //       playerVars: {
-  //         controls: 0,
-  //         autoplay: 1,
-  //         showinfo: 0,
-  //       },
-  //       events: {
-  //         onReady: onPlayerReady,
-  //         onStateChange: onPlayerStateChange
-  //       }
-  //     }
-  //   );
-  // }
+});
 
-  // function onPlayerReady(event) {
-  //   event.target.playVideo();
-  //   event.target.mute();
-  // }
+let lastCurrentSection = 0;
+document.body.addEventListener('mousewheel', ({ currentTarget }) => {
+  const rect = currentTarget.getBoundingClientRect();
+  const top = Math.abs(rect.top);
+  const height = window.innerHeight;
+  let currentSection = Math.floor(top / height);
+  if (top % height > height / 2) {
+    currentSection += 1;
+  }
+  if (lastCurrentSection === currentSection) {
+    return;
+  }
 
-  // function onPlayerStateChange(e) {
-  //   const ytStatus = e.target.getPlayerState();
-  //   if (ytStatus === YT.PlayerState.ENDED) {
-  //     ytPlayer.playVideo();
-  //     ytPlayer.mute();
-  //   }
-  // }
+  lastCurrentSection = currentSection;
+  Array.from(document.querySelectorAll('.video'))
+    .forEach((element, i) => element.style.opacity = i === currentSection ? 1 : 0);
 });

@@ -15,12 +15,24 @@ section {
     font-weight: 700;
 }
 
+.videos {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
 .video {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+
+    &:first-child {
+        opacity: 1;
+    }
 }
 
 article {
@@ -30,5 +42,4 @@ article {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.4)
 }
