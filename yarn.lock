@@ -4111,6 +4111,10 @@ jquery-touch-events@^1.0.7:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/jquery-touch-events/-/jquery-touch-events-1.0.7.tgz#4404e8dded603e762e99895ef503ecbbf402d66d"
 
+jquery.easing@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/jquery.easing/-/jquery.easing-1.4.1.tgz#47982c5836bd758fd48494923c4a101ef6e93e3b"
+
 jquery@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"

@@ -1,6 +1,7 @@
 import 'babel-polyfill';  // アプリ内で1度だけ読み込む エントリーポイントのてっぺん推奨
 import YouTubePlayer from 'youtube-player';
 import $ from 'jquery';
+import 'jquery.easing';
 
 const videoIDs = [
   'Cnj64DsO8T8',
@@ -56,7 +57,7 @@ document.body.addEventListener('mousewheel', event => {
   const currentSection = lastCurrentSection + (event.wheelDeltaY > 0 ? -1 : 1);
   isSlideNow = true;
   // scroll.animateScroll(document.getElementById(`section-${currentSection + 1}`));
-  $('body').animate({ scrollTop: window.innerHeight * currentSection }, 500, 'swing');
+  $('body').animate({ scrollTop: window.innerHeight * currentSection }, 500, 'easeInOutQuart');
   setTimeout(() => isSlideNow = false, 1000);
   lastCurrentSection = currentSection;
   Array.from(document.querySelectorAll('.video'))
