@@ -1,5 +1,6 @@
 import 'babel-polyfill';  // アプリ内で1度だけ読み込む エントリーポイントのてっぺん推奨
 import YouTubePlayer from 'youtube-player';
+import $ from 'jquery';
 
 const videoIDs = [
   'Cnj64DsO8T8',
@@ -37,18 +38,26 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 let lastCurrentSection = 0;
-document.body.addEventListener('mousewheel', ({ currentTarget }) => {
-  const rect = currentTarget.getBoundingClientRect();
-  const top = Math.abs(rect.top);
-  const height = window.innerHeight;
-  let currentSection = Math.floor(top / height);
-  if (top % height > height / 2) {
-    currentSection += 1;
-  }
-  if (lastCurrentSection === currentSection) {
+let isSlideNow = false;
+document.body.addEventListener('mousewheel', event => {
+  event.preventDefault();
+  if (isSlideNow) {
     return;
   }
-
+  if (Math.abs(event.wheelDeltaY) < 20) {
+    return;
+  }
+  if (lastCurrentSection === 0 && event.wheelDeltaY > 0) {
+    return;
+  }
+  if (lastCurrentSection + 1 >= videoIDs.length && event.wheelDeltaY < 0) {
+    return;
+  }
+  const currentSection = lastCurrentSection + (event.wheelDeltaY > 0 ? -1 : 1);
+  isSlideNow = true;
+  // scroll.animateScroll(document.getElementById(`section-${currentSection + 1}`));
+  $('body').animate({ scrollTop: window.innerHeight * currentSection }, 500, 'swing');
+  setTimeout(() => isSlideNow = false, 1000);
   lastCurrentSection = currentSection;
   Array.from(document.querySelectorAll('.video'))
     .forEach((element, i) => element.style.opacity = i === currentSection ? 1 : 0);

@@ -6529,6 +6529,10 @@ slice-ansi@0.0.4:
   dependencies:
     readable-stream "~1.0.31"
 
+smooth-scroll@cferdinandi/smooth-scroll:
+  version "12.1.0"
+  resolved "https://codeload.github.com/cferdinandi/smooth-scroll/tar.gz/c4d8c3bbeb597777ae5bcf96674c7a7424cedbc0"
+
 sntp@1.x.x:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/sntp/-/sntp-1.0.9.tgz#6541184cc90aeea6c6e7b35e2659082443c66198"
